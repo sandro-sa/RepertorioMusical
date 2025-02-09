@@ -1,6 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.RepertorioMusical" parent="Theme.Material3.DayNight.NoActionBar">
-
+    <style name="Base.Theme.RepertorioMusical" parent="Theme.Material3.Dark">
+        <item name="colorPrimary">@color/darkColorPrimary</item>
+        <item name="colorPrimaryVariant">@color/darkColorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/black</item>
     </style>
+
 </resources>

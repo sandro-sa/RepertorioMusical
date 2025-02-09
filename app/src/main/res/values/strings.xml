@@ -33,4 +33,5 @@
     <string name="nenhum_dados_salvo">Nenhum dados salvo</string>
     <string name="artista">Artista(s):</string>
     <string name="foi_clicado">\nFoi clicado</string>
+    <string name="clique_longo">\nClique longo</string>
 </resources>

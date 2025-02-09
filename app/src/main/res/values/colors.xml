@@ -4,6 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#D61E21</color>
     <color name="colorPrimaryDark">#780000</color>
-    <color name="colorAccent">#ff4f4f</color>
-
+    <color name="colorSecondary">#ff4f4f</color>
+    <color name="darkColorPrimary">#4C5EE0</color>
+    <color name="darkColorPrimaryDark">#071950</color>
+    <color name="darkColorSecondary">#7483BF</color>
 </resources>

@@ -1,17 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.RepertorioMusical" parent="Theme.Material3.DayNight.NoActionBar">
-<!--        <item name="colorPrimary">#9D5858</item>-->
-<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-<!--        <item name="colorAccent">@color/colorAccent</item>-->
-<!--        <item name="android:textColor">@color/white</item>-->
+    <style name="Base.Theme.RepertorioMusical" parent="Theme.Material3.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/black</item>
     </style>
-
-    <style name="Theme.RepertorioMusical" parent="Base.Theme.RepertorioMusical" />
-
-<!--    <style name="CustomDialogStyle" parent="Theme.Material3.DayNight.Dialog.Alert">-->
-<!--        <item name="android:background">@color/colorPrimary</item>-->
-<!--        <item name="android:textColor">@color/white</item>-->
-<!--    </style>-->
 
 </resources>
