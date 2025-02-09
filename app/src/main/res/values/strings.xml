@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Repertório Musical</string>
+    <string name="titulo_app">Repertório musical</string>
+    <string name="grupo">Grupo</string>
+    <string name="banda">Banda</string>
+    <string name="solo">Solo</string>
+    <string name="rock">Rock</string>
+    <string name="mpb">MPB</string>
+    <string name="samba">Samba</string>
+    <string name="genero_musical">Gênero Musical</string>
+    <string name="internacional">Internacional</string>
+    <string name="check_origem">Acione o botão para musica internacional</string>
+    <string name="salvar">Salvar</string>
+    <string name="limpar">Limpar</string>
+    <string name="sair">Sair</string>
+    <string name="acoes_necessaria">Acões necessária</string>
+    <string name="nome_banda_cantor_grupo">Nome do cantor, grupo, banda ....</string>
+    <string name="nacional">Nacional</string>
+    <string name="origem">Origem</string>
+    <string name="formulario_resetado">Formulário resetado</string>
+    <string name="preencher_nome_da_banda_grupo_cantor_ar">Preencher nome da banda, grupo, cantor(ar) ....</string>
+    <string name="origem_nacional">Origem: nacional</string>
+    <string name="origem_internacional">Origem: internacional</string>
+    <string name="selecionar_origem">Selecionar origem</string>
+    <string name="genero">"Genêro: "</string>
+    <string name="selecionar_um_genero_musical">Selecionar um genêro musical</string>
+    <string name="erro_ao_carregar_conjucao_musical">Erro ao carregar conjução musical</string>
+    <string name="conjuncao_musical">"Conjunção musical: "</string>
+    <string name="salvar_dados">Salvar dados?</string>
+    <string name="sim">Sim</string>
+    <string name="dados_salvo_com_sucesso">Dados salvo com sucesso</string>
+    <string name="nao">Não</string>
+    <string name="nenhum_dados_salvo">Nenhum dados salvo</string>
+    <string name="artista">Artista(s):</string>
+    <string name="foi_clicado">\nFoi clicado</string>
+</resources>

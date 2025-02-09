@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tipos_conjuncoes_musicais">
+        <item>@string/solo</item>
+        <item>@string/banda</item>
+        <item>@string/grupo</item>
+    </string-array>
+
+    <string-array name="nome_cantores">
+        <item>Titãs</item>
+        <item>Clara Nunes</item>
+        <item>Carlinhos Brown</item>
+        <item>Paralamas do Sucesso</item>
+        <item>Reinaldo</item>
+        <item>Tina Tuner</item>
+        <item>The Smiths</item>
+        <item>Caetano Veloso</item>
+        <item>Gilberto Gil</item>
+        <item>Fundo de Quintal</item>
+    </string-array>
+
+    <integer-array  name="origem">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+    <integer-array  name="genero_musical">
+        <item>0</item>
+        <item>2</item>
+        <item>2</item>
+        <item>0</item>
+        <item>2</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>2</item>
+    </integer-array>
+
+    <integer-array  name="conjuncao_musical">
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>0</item>
+        <item>0</item>
+        <item>2</item>
+    </integer-array>
+
+</resources>
