@@ -13,6 +13,9 @@
         android:theme="@style/Base.Theme.RepertorioMusical"
         tools:targetApi="31">
         <activity
+            android:name=".SobreActivity"
+            android:exported="false" />
+        <activity
             android:name=".CantoresActivity"
             android:exported="true">
             <intent-filter>

@@ -34,4 +34,19 @@
     <string name="artista">Artista(s):</string>
     <string name="foi_clicado">\nFoi clicado</string>
     <string name="clique_longo">\nClique longo</string>
+    <string name="descricao">Projeto desenvolvido para o curso de desenvovimento mobile android java.\nObjetivo:\nCriar repertórios com letras de musicas para compartilhar com musicos ou envolvidos no eventos.</string>
+    <string name="autor">Autor: <a href="https://www.linkedin.com/in/sandro-a-desa/">Sandro Amancio de Sá</a></string>
+    <string name="sobre">Sobre</string>
+    <string name="lista_de_artistas">Lista de Artistas</string>
+    <string name="novo_artista">Novo Artista</string>
+    <string name="cadastro_de_artista">Cadastro de artista</string>
+    <string name="link_progeto_git_hub"><a href="https://github.com/sandro-sa/RepertorioMusical">Colabore com o projeto</a></string>
+    <string name="colabore_com_o_projeto_em">Colabore com o projeto em:</string>
+    <string name="email_autor"><a href="sandrosa@alunos.utfpr.edu.br">sandrosa@alunos.utfpr.edu.br</a></string>
+    <string name="descricao_logo">Logo do aplicativo</string>
+    <string name="logo_utfpr">Logo da univercidade de tecnologia federal do Parána</string>
+    <string name="image_sobre">Um shom com varias pessoas dançando e cantado</string>
+    <string name="descricao_projeto">Descrição do projeto</string>
+    <string name="nenhum_navegar_instalado">Nenhum navegar instalado</string>
+    <string name="nenhum_aplicativo_para_envio_de_emails_instalado">Nenhum Aplicativo para envio de emails instalado</string>
 </resources>

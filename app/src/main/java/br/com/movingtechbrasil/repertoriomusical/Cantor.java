@@ -3,13 +3,10 @@ package br.com.movingtechbrasil.repertoriomusical;
 public class Cantor {
 
     private String nomeCantor;
-
     private Origem origem;
-
     private GeneroMusical generoMusical;
-
     private int conjucaoMusical;
-
+    public Cantor() {}
     public Cantor(String nomeCantor, Origem origem, GeneroMusical generoMusical, int conjucaoMusical) {
         this.nomeCantor = nomeCantor;
         this.origem = origem;
@@ -41,4 +38,13 @@ public class Cantor {
         this.conjucaoMusical = conjucaoMusical;
     }
 
+    @Override
+    public String toString() {
+        return "Cantor{" +
+                "nomeCantor='" + nomeCantor + '\'' +
+                ", origem=" + origem +
+                ", generoMusical=" + generoMusical +
+                ", conjucaoMusical=" + conjucaoMusical +
+                '}';
+    }
 }

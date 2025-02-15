@@ -1,39 +1,43 @@
 package br.com.movingtechbrasil.repertoriomusical;
 
+import android.content.DialogInterface;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
-import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.textfield.TextInputEditText;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class CantorActivity extends AppCompatActivity {
+    public static final String KEY_NOME_CANTOR = "KEY_NOME_CANTOR";
+    public static final String KEY_ORIGEM = "KEY_ORIGEM";
+    public static final String KEY_CONJUNCAO_MUSICAL = "KEY_CONJUNCAO_MUSICAL";
+    public static final String KEY_GENERO_MUSICAL = "KEY_GENERO_MUSICAL";
     private boolean erros = false;
-    private String respostaSucesso = "",  respostaErro = "";
+    private String respostaErro = "";
     private TextInputEditText textInputNomeCantor;
     private Spinner spinnerConjuncaoMusical;
     private RadioButton nacional, internacional;
     private CheckBox mpb, rock, samba;
 
+    private Cantor cantor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_cantor);
-
+        setTitle(getString(R.string.cadastro_de_artista));
         textInputNomeCantor = findViewById(R.id.idtextInputNomeCantor);
         nacional = findViewById(R.id.idRadioButtonNacional);
         internacional = findViewById(R.id.idRadioButtonInternacional);
@@ -42,34 +46,24 @@ public class CantorActivity extends AppCompatActivity {
         samba = findViewById(R.id.idCheckBoxSamba);
         spinnerConjuncaoMusical = findViewById(R.id.idSpinnerConjuncaoMusical);
 
-
         conjuncaoMusical();
-
-        Window window = getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
     }
-    public void salvar(View view){
+    public void salvar(){
 
-        validarInpunt();
-        validarCheckBoxOrigem();
-        validarGeneroMusical();
-        validarSpinnerConjuncaoMusical();
-
+        cantor = new Cantor();
+        validarInpunt(cantor);
+        validarCheckBoxOrigem(cantor);
+        validarGeneroMusical(cantor);
+        validarSpinnerConjuncaoMusical(cantor);
         if(erros){
-            mensagemErro(respostaErro);
+           mensagemErro(respostaErro);
 
         }else{
-            mensagemSucesso(respostaSucesso);
+            mensagemSucesso(cantor);
         }
 
     }
-    public void limparCampos(View view){
+    public void limparCampos(){
 
         textInputNomeCantor.setText(null);
         nacional.setChecked(false);
@@ -78,7 +72,6 @@ public class CantorActivity extends AppCompatActivity {
         rock.setChecked(false);
         samba.setChecked(false);
         spinnerConjuncaoMusical.setSelection(0);
-
         Toast.makeText( getApplicationContext(), R.string.formulario_resetado, Toast.LENGTH_LONG).show();
 
     }
@@ -90,72 +83,94 @@ public class CantorActivity extends AppCompatActivity {
         listaDeConjuncoesMusicais.add(getString(R.string.grupo));
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaDeConjuncoesMusicais);
         spinnerConjuncaoMusical.setAdapter(adapter);
+
     }
-    private void validarInpunt(){
+    private void validarInpunt(Cantor cantor){
 
         String nomeDaMusica = Objects.requireNonNull(textInputNomeCantor.getText()).toString();
         if(nomeDaMusica.trim().isEmpty()){
             erros = true;
             respostaErro += getString(R.string.preencher_nome_da_banda_grupo_cantor_ar)+"\n";
         }else{
-            System.out.println(nomeDaMusica.trim());
-            respostaSucesso =  nomeDaMusica.trim() + "\n" ;
+            cantor.setNomeCantor(nomeDaMusica.trim());
         }
+
     }
-    private void validarCheckBoxOrigem(){
+    private void validarCheckBoxOrigem(Cantor cantor){
 
         if(nacional.isChecked()){
-            respostaSucesso += getString(R.string.origem_nacional)+"\n";
+            cantor.setOrigem(Origem.Nacional);
         } else if (internacional.isChecked()) {
-            respostaSucesso += getString(R.string.origem_internacional)+"\n";
+            cantor.setOrigem(Origem.Internacional);
+
         }else{
             erros = true;
             respostaErro += getString(R.string.selecionar_origem) + "\n";
         }
 
     }
-    private void validarGeneroMusical(){
+    private void validarGeneroMusical(Cantor cantor){
 
         if(mpb.isChecked()||rock.isChecked() || samba.isChecked()){
-            respostaSucesso += getString(R.string.genero);
+
             if(mpb.isChecked()){
-                respostaSucesso += getString(R.string.mpb)+" \n";
+                cantor.setGeneroMusical(GeneroMusical.Mpb);
             }
             if(rock.isChecked()){
-                respostaSucesso += getString(R.string.rock)+" \n";
+                cantor.setGeneroMusical(GeneroMusical.Rock);
             }
             if(samba.isChecked()){
-                respostaSucesso += getString(R.string.samba)+" \n";
+                cantor.setGeneroMusical(GeneroMusical.Samba);
             }
+
         }else{
             respostaErro += getString(R.string.selecionar_um_genero_musical);
             erros = true;
         }
 
     }
-    private void validarSpinnerConjuncaoMusical(){
+    private void validarSpinnerConjuncaoMusical(Cantor cantor){
 
-        String conjuncaoMusical = (String) spinnerConjuncaoMusical.getSelectedItem();
-        if(conjuncaoMusical == null){
-            erros = true;
+        int conjuncaoMusical = spinnerConjuncaoMusical.getSelectedItemPosition();
+
+        if(conjuncaoMusical == AdapterView.INVALID_POSITION){
             respostaErro += getString(R.string.erro_ao_carregar_conjucao_musical);
+            erros = true;
+
         }else{
-            respostaSucesso += getString(R.string.conjuncao_musical)+conjuncaoMusical;
+            cantor.setConjucaoMusical(conjuncaoMusical);
         }
+
     }
-    public void mensagemSucesso(String resposta){
+    private void mensagemSucesso(Cantor cantor){
+
+        String mensagem = "Deseja salva os dados do artista:\n"+cantor.getNomeCantor();
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle(R.string.salvar_dados);
-        dialog.setMessage(resposta);
+        dialog.setMessage(mensagem);
         dialog.setCancelable(false);
         dialog.setIcon(android.R.drawable.ic_menu_send);
         dialog.setPositiveButton(R.string.sim, (dialog2, which) -> {
             Toast.makeText( getApplicationContext(), getString(R.string.dados_salvo_com_sucesso), Toast.LENGTH_LONG).show();
-            limparCampos(null);
+            limparCampos();
         });
 
-        dialog.setNegativeButton(R.string.nao, (dialog1, which) -> Toast.makeText( getApplicationContext(), getString(R.string.nenhum_dados_salvo), Toast.LENGTH_LONG).show());
+        dialog.setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                Intent intentResposta = new Intent();
+                intentResposta.putExtra(KEY_NOME_CANTOR, cantor.getNomeCantor());
+                intentResposta.putExtra(KEY_ORIGEM, cantor.getOrigem().toString());
+                intentResposta.putExtra(KEY_CONJUNCAO_MUSICAL, cantor.getConjucaoMusical());
+                intentResposta.putExtra(KEY_GENERO_MUSICAL, cantor.getGeneroMusical().toString());
+
+                setResult(CantorActivity.RESULT_OK, intentResposta);
+
+                finish();
+            }
+        });
 
         dialog.create();
         dialog.show();
@@ -170,9 +185,31 @@ public class CantorActivity extends AppCompatActivity {
         dialogErro.setPositiveButton(R.string.sair, (dialog, which) -> {
             erros = false;
             respostaErro =  "";
-            respostaSucesso = "";
         });
         dialogErro.create();
         dialogErro.show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.cantor_opcoes,menu);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int idMenuItem = item.getItemId();
+
+        if(idMenuItem == R.id.menuItemSalvar){
+            salvar();
+            return true;
+        } else if (idMenuItem == R.id.menuItemLimpar) {
+            limparCampos();
+            return true;
+        }else{
+            return super.onOptionsItemSelected(item);
+        }
     }
 }
